@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html lang="th" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kanada Tuptim - Personal Portfolio</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Mali (Cute handwritten feel) & Kanit (Clean Thai) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600&family=Mali:wght@400;600;700&display=swap" rel="stylesheet">
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        sage: {
+                            50: '#F4F8F5',
+                            100: '#E6EFEA',
+                            200: '#C9DDD2',
+                            500: '#4E8D67',
+                            600: '#3D7252',
+                            700: '#2E563E',
+                            800: '#1E3A2B',
+                        },
+                        cream: '#FDFBF7',
+                        sand: '#F3EFE6',
+                        pastelPink: '#FFD6E0',
+                        pastelYellow: '#FFEFB7',
+                        pastelGreen: '#D8F3DC',
+                        pastelBlue: '#D8E2DC'
+                    },
+                    fontFamily: {
+                        mali: ['Mali', 'cursive'],
+                        kanit: ['Kanit', 'sans-serif'],
+                    },
+                    borderRadius: {
+                        '4xl': '2rem',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            font-family: 'Kanit', sans-serif;
+            background-color: #FDFBF7;
+            color: #2D3748;
+        }
+        h1, h2, h3, .font-cute {
+            font-family: 'Mali', cursive;
+        }
+        /* Custom Paper & Tape Effects */
+        .tape-effect {
+            position: relative;
+        }
+        .tape-effect::before {
+            content: '';
+            position: absolute;
+            top: -10px;
+            left: 50%;
+            transform: translateX(-50%) rotate(-2deg);
+            width: 90px;
+            height: 22px;
+            background-color: rgba(230, 239, 234, 0.85);
+            border: 1px dashed rgba(78, 141, 103, 0.3);
+            backdrop-filter: blur(2px);
+            z-index: 10;
+        }
+        .shadow-cute {
+            box-shadow: 4px 4px 0px #4E8D67;
+        }
+        .shadow-cute-sm {
+            box-shadow: 2px 2px 0px #4E8D67;
+        }
+        .shadow-cute-hover {
+            transition: all 0.2s ease;
+        }
+        .shadow-cute-hover:hover {
+            transform: translateY(-3px);
+            box-shadow: 6px 6px 0px #3D7252;
+        }
+    </style>
+</head>
+<body class="bg-cream text-gray-800 antialiased selection:bg-sage-200">
+
+    <!-- Sticky Navigation -->
+    <nav class="sticky top-3 z-50 px-4 max-w-5xl mx-auto">
+        <div class="bg-white/80 backdrop-blur-md rounded-full px-5 py-3 border-2 border-sage-500 shadow-sm flex justify-between items-center">
+            <a href="#" class="font-cute text-xl font-bold text-sage-700 flex items-center gap-2">
+                <span class="bg-pastelPink text-pink-600 rounded-full p-1.5 inline-block">✨</span>
+                Tuptim.Space
+            </a>
+            
+            <!-- Desktop Nav Links -->
+            <div class="hidden md:flex items-center gap-6 text-sm font-medium text-gray-600">
+                <a href="#about" class="hover:text-sage-600 transition-colors">เกี่ยวกับฉัน</a>
+                <a href="#education" class="hover:text-sage-600 transition-colors">ประวัติการศึกษา</a>
+                <a href="#traits" class="hover:text-sage-600 transition-colors">นิสัย & ความสามารถ</a>
+                <a href="#transcript" class="hover:text-sage-600 transition-colors">ผลการเรียน</a>
+                <a href="#contact" class="bg-sage-500 hover:bg-sage-600 text-white px-4 py-1.5 rounded-full shadow-cute-sm transition-all font-cute text-xs font-semibold">
+                    ติดต่อทับทิม
+                </a>
+            </div>
+
+            <!-- Mobile Menu Button -->
+            <button id="mobileMenuBtn" class="md:hidden text-sage-700 p-1">
+                <i data-lucide="menu" class="w-6 h-6"></i>
+            </button>
+        </div>
+
+        <!-- Mobile Drawer Menu -->
+        <div id="mobileMenu" class="hidden md:hidden mt-2 bg-white rounded-2xl p-4 border-2 border-sage-500 shadow-lg flex flex-col gap-3 font-cute text-center">
+            <a href="#about" class="py-1 text-gray-700 hover:text-sage-600">เกี่ยวกับฉัน</a>
+            <a href="#education" class="py-1 text-gray-700 hover:text-sage-600">ประวัติการศึกษา</a>
+            <a href="#traits" class="py-1 text-gray-700 hover:text-sage-600">นิสัย & ความสามารถ</a>
+            <a href="#transcript" class="py-1 text-gray-700 hover:text-sage-600">ผลการเรียน</a>
+            <a href="#contact" class="py-2 bg-sage-500 text-white rounded-full text-sm">ติดต่อทับทิม</a>
+        </div>
+    </nav>
+
+    <main class="max-w-4xl mx-auto px-4 py-8 space-y-16">
+
+        <!-- Hero Profile Section -->
+        <section id="about" class="pt-4">
+            <div class="bg-white rounded-3xl border-2 border-sage-500 p-6 md:p-8 shadow-cute relative overflow-hidden">
+                <!-- Background decorative elements -->
+                <div class="absolute -top-10 -right-10 w-32 h-32 bg-pastelYellow/50 rounded-full blur-xl pointer-events-none"></div>
+                <div class="absolute -bottom-10 -left-10 w-32 h-32 bg-pastelGreen/50 rounded-full blur-xl pointer-events-none"></div>
+
+                <div class="flex flex-col md:flex-row items-center gap-8 relative z-10">
+                    <!-- Photo Frame with Tape -->
+                    <div class="relative w-48 md:w-56 flex-shrink-0 tape-effect">
+                        <div class="bg-sand p-3 rounded-2xl border-2 border-sage-500 shadow-sm transform -rotate-1">
+                            <div class="aspect-[3/4] rounded-xl overflow-hidden bg-sage-100 relative group">
+                                <img src="profile.jpg" 
+                                     alt="น.ส. กนดา ไกยรัตน์" 
+                                     class="w-full h-full object-cover rounded-lg transition-transform duration-300 group-hover:scale-105"
+                                     id="profileImage"
+                                     onerror="this.onerror=null; this.src='https://placehold.co/400x533/e2e8f0/4e8d67?text=Tuptim+Photo';">
+                            </div>
+                            <p class="text-center font-cute text-xs text-sage-700 mt-2 font-semibold">กนดา ไกยรัตน์ (ทับทิม) ✨</p>
+                        </div>
+                    </div>
+
+                    <!-- Intro Info -->
+                    <div class="flex-1 text-center md:text-left space-y-4">
+                        <div>
+                            <span class="inline-block px-3 py-1 bg-pastelGreen text-sage-800 font-cute text-xs rounded-full border border-sage-500 mb-2">
+                                🎒 สายการเรียน วิทย์-คณิต
+                            </span>
+                            <h1 class="text-3xl md:text-4xl font-bold text-sage-800">
+                                สวัสดีค่ะ! หนูชื่อ <span class="text-sage-500">ทับทิม</span> 🎀
+                            </h1>
+                            <p class="text-gray-600 mt-1 text-base">
+                                น.ส. กนดา ไกยรัตน์ | นักเรียนระดับมัธยมศึกษาตอนปลาย
+                            </p>
+                        </div>
+
+                        <!-- Highlights Quick Badges -->
+                        <div class="flex flex-wrap gap-2 justify-center md:justify-start">
+                            <span class="px-3 py-1 bg-sand text-sage-700 text-xs rounded-lg border border-sage-300 flex items-center gap-1">
+                                <i data-lucide="cake" class="w-3.5 h-3.5"></i> 5 ม.ค. 2551 (18 ปี)
+                            </span>
+                            <span class="px-3 py-1 bg-sand text-sage-700 text-xs rounded-lg border border-sage-300 flex items-center gap-1">
+                                <i data-lucide="flag" class="w-3.5 h-3.5"></i> สัญชาติไทย / พุทธ
+                            </span>
+                            <span class="px-3 py-1 bg-sand text-sage-700 text-xs rounded-lg border border-sage-300 flex items-center gap-1">
+                                <i data-lucide="book-open" class="w-3.5 h-3.5"></i> รร.ปทุมเทพวิทยาคาร
+                            </span>
+                        </div>
+
+                        <!-- Short Pitch Card -->
+                        <div class="bg-sage-50 p-4 rounded-2xl border border-sage-200 text-sm text-sage-800 leading-relaxed">
+                            <p class="italic">
+                                "เรียนรู้ไว มีความมุ่งมั่น ตั้งใจทำงาน เฟรนด์ลี่เข้ากับผู้อื่นได้ง่าย และกล้าแสดงออกอย่างสร้างสรรค์ค่ะ!"
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Education History Section -->
+        <section id="education" class="space-y-6">
+            <div class="text-center space-y-2">
+                <span class="bg-pastelYellow text-amber-800 px-3 py-1 rounded-full text-xs font-cute border border-amber-300">
+                    ACADEMIC JOURNEY
+                </span>
+                <h2 class="text-2xl md:text-3xl font-bold text-sage-800 flex items-center justify-center gap-2">
+                    <i data-lucide="graduation-cap" class="w-7 h-7 text-sage-500"></i> ประวัติการศึกษา
+                </h2>
+            </div>
+
+            <!-- Green Folder Container Style -->
+            <div class="bg-sage-500 rounded-3xl p-6 md:p-8 text-white shadow-cute relative overflow-hidden">
+                <!-- Folder tab visual header -->
+                <div class="absolute top-0 right-8 bg-sage-600 px-6 py-2 rounded-b-xl text-xs font-cute text-sage-100 border-x border-b border-sage-400">
+                    EDUCATION FOLDER
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
+                    
+                    <!-- Item 1: Kindergarten -->
+                    <div class="bg-white text-gray-800 p-5 rounded-2xl border-2 border-sage-700 shadow-sm relative group hover:border-pastelYellow transition-all">
+                        <div class="flex justify-between items-start mb-2">
+                            <span class="bg-sage-500 text-white text-xs font-bold px-2.5 py-1 rounded-md font-cute">
+                                2553
+                            </span>
+                            <span class="text-xs text-sage-600 bg-sage-50 px-2 py-0.5 rounded font-medium">
+                                สำเร็จการศึกษาปี 2556
+                            </span>
+                        </div>
+                        <h3 class="font-cute text-lg font-bold text-sage-800">ระดับอนุบาล</h3>
+                        <p class="text-sm text-gray-600 mt-1 flex items-center gap-1">
+                            <i data-lucide="building-2" class="w-4 h-4 text-sage-500"></i>
+                            โรงเรียนอนุบาลเทศบาล 4 ฉลองรัตน์
+                        </p>
+                    </div>
+
+                    <!-- Item 2: Primary -->
+                    <div class="bg-white text-gray-800 p-5 rounded-2xl border-2 border-sage-700 shadow-sm relative group hover:border-pastelYellow transition-all">
+                        <div class="flex justify-between items-start mb-2">
+                            <span class="bg-sage-500 text-white text-xs font-bold px-2.5 py-1 rounded-md font-cute">
+                                2558
+                            </span>
+                            <span class="text-xs text-sage-600 bg-sage-50 px-2 py-0.5 rounded font-medium">
+                                สำเร็จการศึกษาปี 2564
+                            </span>
+                        </div>
+                        <h3 class="font-cute text-lg font-bold text-sage-800">ระดับประถมศึกษา</h3>
+                        <p class="text-sm text-gray-600 mt-1 flex items-center gap-1">
+                            <i data-lucide="building-2" class="w-4 h-4 text-sage-500"></i>
+                            โรงเรียนอนุบาลหนองคาย
+                        </p>
+                    </div>
+
+                    <!-- Item 3: Lower Secondary -->
+                    <div class="bg-white text-gray-800 p-5 rounded-2xl border-2 border-sage-700 shadow-sm relative group hover:border-pastelYellow transition-all">
+                        <div class="flex justify-between items-start mb-2">
+                            <span class="bg-sage-500 text-white text-xs font-bold px-2.5 py-1 rounded-md font-cute">
+                                2564
+                            </span>
+                            <span class="text-xs text-sage-600 bg-sage-50 px-2 py-0.5 rounded font-medium">
+                                สำเร็จการศึกษาปี 2566
+                            </span>
+                        </div>
+                        <h3 class="font-cute text-lg font-bold text-sage-800">ระดับมัธยมศึกษาตอนต้น</h3>
+                        <p class="text-sm text-gray-600 mt-1 flex items-center gap-1">
+                            <i data-lucide="building-2" class="w-4 h-4 text-sage-500"></i>
+                            โรงเรียนปทุมเทพวิทยาคาร
+                        </p>
+                    </div>
+
+                    <!-- Item 4: Upper Secondary -->
+                    <div class="bg-white text-gray-800 p-5 rounded-2xl border-2 border-sage-700 shadow-sm relative group hover:border-pastelYellow transition-all border-l-4 border-l-sage-500">
+                        <div class="flex justify-between items-start mb-2">
+                            <span class="bg-sage-500 text-white text-xs font-bold px-2.5 py-1 rounded-md font-cute">
+                                2566
+                            </span>
+                            <span class="text-xs text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded font-medium border border-emerald-200">
+                                สำเร็จการศึกษาปี 2569
+                            </span>
+                        </div>
+                        <h3 class="font-cute text-lg font-bold text-sage-800">ระดับมัธยมศึกษาตอนปลาย</h3>
+                        <p class="text-sm text-gray-600 mt-1 flex items-center gap-1">
+                            <i data-lucide="building-2" class="w-4 h-4 text-sage-500"></i>
+                            โรงเรียนปทุมเทพวิทยาคาร
+                        </p>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Personality, Skills & Hobbies Section -->
+        <section id="traits" class="space-y-6">
+            <div class="text-center space-y-2">
+                <span class="bg-pastelPink text-pink-800 px-3 py-1 rounded-full text-xs font-cute border border-pink-300">
+                    PERSONALITY & TALENTS
+                </span>
+                <h2 class="text-2xl md:text-3xl font-bold text-sage-800 flex items-center justify-center gap-2">
+                    <i data-lucide="sparkles" class="w-7 h-7 text-sage-500"></i> นิสัย ความสามารถ และงานอดิเรก
+                </h2>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+
+                <!-- 1. Personality & Work Style -->
+                <div class="md:col-span-2 bg-white rounded-3xl p-6 border-2 border-sage-500 shadow-cute space-y-4">
+                    <h3 class="font-cute text-xl font-bold text-sage-800 flex items-center gap-2 pb-2 border-b border-sage-100">
+                        <span class="bg-pastelYellow p-1.5 rounded-lg text-amber-700">🧩</span> 
+                        ลักษณะนิสัยและการทำงาน
+                    </h3>
+                    
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-sm">
+                        <div class="bg-sand/60 p-3 rounded-xl border border-sage-200 flex items-start gap-2.5">
+                            <i data-lucide="zap" class="w-4 h-4 text-amber-600 mt-0.5 shrink-0"></i>
+                            <div>
+                                <p class="font-semibold text-sage-800">เรียนรู้เร็ว & ความจำดี</p>
+                                <p class="text-xs text-gray-600">เรียนรู้เนื้อหาใหม่ๆ ได้ไว มีความจำดีในเรื่องการเรียน</p>
+                            </div>
+                        </div>
+
+                        <div class="bg-sand/60 p-3 rounded-xl border border-sage-200 flex items-start gap-2.5">
+                            <i data-lucide="smile" class="w-4 h-4 text-emerald-600 mt-0.5 shrink-0"></i>
+                            <div>
+                                <p class="font-semibold text-sage-800">เฟรนด์ลี่ & กล้าแสดงออก</p>
+                                <p class="text-xs text-gray-600">ชอบพูดคุยทำความรู้จักกับคนใหม่ๆ มนุษยสัมพันธ์ดี</p>
+                            </div>
+                        </div>
+
+                        <div class="bg-sand/60 p-3 rounded-xl border border-sage-200 flex items-start gap-2.5">
+                            <i data-lucide="users" class="w-4 h-4 text-blue-600 mt-0.5 shrink-0"></i>
+                            <div>
+                                <p class="font-semibold text-sage-800">ปรับตัวง่าย & รับฟังเก่ง</p>
+                                <p class="text-xs text-gray-600">ทำงานร่วมกับผู้อื่นได้ดี เปิดรับและรับฟังความคิดเห็น</p>
+                            </div>
+                        </div>
+
+                        <div class="bg-sand/60 p-3 rounded-xl border border-sage-200 flex items-start gap-2.5">
+                            <i data-lucide="lightbulb" class="w-4 h-4 text-purple-600 mt-0.5 shrink-0"></i>
+                            <div>
+                                <p class="font-semibold text-sage-800">มีความคิดสร้างสรรค์</p>
+                                <p class="text-xs text-gray-600">สร้างสรรค์ผลงานและการควบรวมกระบวนการทำงาน</p>
+                            </div>
+                        </div>
+
+                        <div class="sm:col-span-2 bg-pastelGreen/40 p-3 rounded-xl border border-sage-300 flex items-start gap-2.5">
+                            <i data-lucide="target" class="w-4 h-4 text-sage-700 mt-0.5 shrink-0"></i>
+                            <div>
+                                <p class="font-semibold text-sage-800">มีความมุ่งมั่นตั้งใจ</p>
+                                <p class="text-xs text-gray-700">มุ่งมั่นในสิ่งที่อยากจะทำ ยึดมั่นในความถูกต้อง ไม่ชอบการเอาเปรียบ</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 2. Abilities / Special Skills -->
+                <div class="bg-white rounded-3xl p-6 border-2 border-sage-500 shadow-cute space-y-4">
+                    <h3 class="font-cute text-xl font-bold text-sage-800 flex items-center gap-2 pb-2 border-b border-sage-100">
+                        <span class="bg-pastelPink p-1.5 rounded-lg text-pink-700">⭐</span> 
+                        ความสามารถพิเศษ
+                    </h3>
+
+                    <ul class="space-y-3 text-sm">
+                        <li class="flex items-center gap-2 bg-sage-50 p-2.5 rounded-xl border border-sage-200">
+                            <i data-lucide="mic" class="w-4 h-4 text-pink-500"></i>
+                            <span class="font-medium text-sage-800">ร้องเพลง</span>
+                        </li>
+                        <li class="flex items-center gap-2 bg-sage-50 p-2.5 rounded-xl border border-sage-200">
+                            <i data-lucide="activity" class="w-4 h-4 text-emerald-500"></i>
+                            <span class="font-medium text-sage-800">เล่นกีฬาแบดมินตัน</span>
+                        </li>
+                        <li class="flex items-center gap-2 bg-sage-50 p-2.5 rounded-xl border border-sage-200">
+                            <i data-lucide="message-circle" class="w-4 h-4 text-blue-500"></i>
+                            <span class="font-medium text-sage-800">พูดเก่ง / การสื่อสาร</span>
+                        </li>
+                        <li class="flex items-center gap-2 bg-sage-50 p-2.5 rounded-xl border border-sage-200">
+                            <i data-lucide="heart-handshake" class="w-4 h-4 text-purple-500"></i>
+                            <span class="font-medium text-sage-800 text-xs">กล้าพูดคุยกับคนแปลกหน้าทั้งผู้ใหญ่และเด็ก</span>
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+
+            <!-- 3. Hobbies Horizontal Badges -->
+            <div class="bg-sand/80 rounded-3xl p-6 border-2 border-sage-500 shadow-cute space-y-3">
+                <h3 class="font-cute text-xl font-bold text-sage-800 flex items-center gap-2">
+                    <span class="bg-pastelGreen p-1.5 rounded-lg text-sage-700">🎨</span>
+                    งานอดิเรก (Hobbies)
+                </h3>
+                <div class="flex flex-wrap gap-2.5">
+                    <span class="px-4 py-2 bg-white rounded-2xl border border-sage-300 text-sm font-medium text-sage-800 flex items-center gap-2 shadow-sm hover:scale-105 transition-transform">
+                        🖌️ วาดภาพระบายสี
+                    </span>
+                    <span class="px-4 py-2 bg-white rounded-2xl border border-sage-300 text-sm font-medium text-sage-800 flex items-center gap-2 shadow-sm hover:scale-105 transition-transform">
+                        🎤 ร้องเพลง
+                    </span>
+                    <span class="px-4 py-2 bg-white rounded-2xl border border-sage-300 text-sm font-medium text-sage-800 flex items-center gap-2 shadow-sm hover:scale-105 transition-transform">
+                        🚲 วิ่ง-ปั่นจักรยาน
+                    </span>
+                    <span class="px-4 py-2 bg-white rounded-2xl border border-sage-300 text-sm font-medium text-sage-800 flex items-center gap-2 shadow-sm hover:scale-105 transition-transform">
+                        🔍 อ่านนิยายสืบสวน
+                    </span>
+                    <span class="px-4 py-2 bg-white rounded-2xl border border-sage-300 text-sm font-medium text-sage-800 flex items-center gap-2 shadow-sm hover:scale-105 transition-transform">
+                        ✂️ ประดิษฐ์งาน DIY
+                    </span>
+                    <span class="px-4 py-2 bg-white rounded-2xl border border-sage-300 text-sm font-medium text-sage-800 flex items-center gap-2 shadow-sm hover:scale-105 transition-transform">
+                        🎵 เต้น TikTok
+                    </span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Transcript Documents Section -->
+        <section id="transcript" class="space-y-6">
+            <div class="text-center space-y-2">
+                <span class="bg-pastelGreen text-emerald-800 px-3 py-1 rounded-full text-xs font-cute border border-emerald-300">
+                    OFFICIAL DOCUMENTS
+                </span>
+                <h2 class="text-2xl md:text-3xl font-bold text-sage-800 flex items-center justify-center gap-2">
+                    <i data-lucide="file-text" class="w-7 h-7 text-sage-500"></i> ใบแสดงผลการเรียน (Transcript)
+                </h2>
+            </div>
+
+            <div class="bg-white rounded-3xl p-6 md:p-8 border-2 border-sage-500 shadow-cute text-center space-y-6">
+                <p class="text-sm text-gray-600 max-w-xl mx-auto">
+                    เอกสารแสดงผลการเรียนระดับมัธยมศึกษา (ปพ.1) สามารถคลิกที่รูปภาพเพื่อขยายดูรายละเอียดได้อย่างชัดเจน
+                </p>
+
+                <!-- Documents Grid View -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-2xl mx-auto">
+                    
+                    <!-- Page 1 Preview -->
+                    <div class="group relative cursor-pointer" onclick="openModal('https://placehold.co/800x1130/ffffff/1e3a2b?text=Transcript+Page+1')">
+                        <div class="bg-sage-50 border-2 border-dashed border-sage-400 p-3 rounded-2xl transition-all duration-300 group-hover:border-sage-600 group-hover:shadow-md">
+                            <div class="aspect-[1/1.4] bg-white rounded-xl overflow-hidden relative shadow-sm">
+                                <img src="https://placehold.co/400x565/ffffff/1e3a2b?text=Transcript+Page+1" 
+                                     alt="ใบแสดงผลการเรียน หน้า 1" 
+                                     class="w-full h-full object-cover">
+                                <div class="absolute inset-0 bg-sage-800/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center text-white font-cute text-sm">
+                                    <span class="bg-sage-700/90 px-3 py-1.5 rounded-full flex items-center gap-1">
+                                        <i data-lucide="zoom-in" class="w-4 h-4"></i> ขยายดูเอกสาร
+                                    </span>
+                                </div>
+                            </div>
+                            <p class="font-cute text-xs text-sage-700 mt-2 font-semibold">ใบแสดงผลการเรียน (หน้า 1)</p>
+                        </div>
+                    </div>
+
+                    <!-- Page 2 Preview -->
+                    <div class="group relative cursor-pointer" onclick="openModal('https://placehold.co/800x1130/ffffff/1e3a2b?text=Transcript+Page+2')">
+                        <div class="bg-sage-50 border-2 border-dashed border-sage-400 p-3 rounded-2xl transition-all duration-300 group-hover:border-sage-600 group-hover:shadow-md">
+                            <div class="aspect-[1/1.4] bg-white rounded-xl overflow-hidden relative shadow-sm">
+                                <img src="https://placehold.co/400x565/ffffff/1e3a2b?text=Transcript+Page+2" 
+                                     alt="ใบแสดงผลการเรียน หน้า 2" 
+                                     class="w-full h-full object-cover">
+                                <div class="absolute inset-0 bg-sage-800/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center text-white font-cute text-sm">
+                                    <span class="bg-sage-700/90 px-3 py-1.5 rounded-full flex items-center gap-1">
+                                        <i data-lucide="zoom-in" class="w-4 h-4"></i> ขยายดูเอกสาร
+                                    </span>
+                                </div>
+                            </div>
+                            <p class="font-cute text-xs text-sage-700 mt-2 font-semibold">ใบแสดงผลการเรียน (หน้า 2)</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Information Section -->
+        <section id="contact" class="space-y-6">
+            <div class="text-center space-y-2">
+                <span class="bg-pastelYellow text-amber-800 px-3 py-1 rounded-full text-xs font-cute border border-amber-300">
+                    GET IN TOUCH
+                </span>
+                <h2 class="text-2xl md:text-3xl font-bold text-sage-800 flex items-center justify-center gap-2">
+                    <i data-lucide="phone-call" class="w-7 h-7 text-sage-500"></i> ข้อมูลการติดต่อ
+                </h2>
+            </div>
+
+            <div class="bg-white rounded-3xl p-6 md:p-8 border-2 border-sage-500 shadow-cute">
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+
+                    <!-- Phone -->
+                    <div class="p-4 bg-sand/50 rounded-2xl border border-sage-200 flex items-center justify-between group hover:border-sage-500 transition-colors">
+                        <div class="flex items-center gap-3">
+                            <div class="bg-pastelGreen p-2.5 rounded-xl text-sage-800">
+                                <i data-lucide="phone" class="w-5 h-5"></i>
+                            </div>
+                            <div>
+                                <p class="text-xs text-gray-500 font-cute">เบอร์โทรศัพท์</p>
+                                <p class="font-semibold text-sage-800 text-sm">097-294-5649</p>
+                            </div>
+                        </div>
+                        <button onclick="copyToClipboard('0972945649')" class="text-sage-600 hover:text-sage-800 p-2 rounded-lg bg-white border border-sage-200 text-xs font-cute flex items-center gap-1">
+                            <i data-lucide="copy" class="w-3.5 h-3.5"></i> คัดลอก
+                        </button>
+                    </div>
+
+                    <!-- Email -->
+                    <div class="p-4 bg-sand/50 rounded-2xl border border-sage-200 flex items-center justify-between group hover:border-sage-500 transition-colors">
+                        <div class="flex items-center gap-3 overflow-hidden">
+                            <div class="bg-pastelYellow p-2.5 rounded-xl text-amber-800">
+                                <i data-lucide="mail" class="w-5 h-5"></i>
+                            </div>
+                            <div class="truncate">
+                                <p class="text-xs text-gray-500 font-cute">อีเมลโรงเรียน</p>
+                                <p class="font-semibold text-sage-800 text-xs md:text-sm truncate">6340944@schoolptk.ac.th</p>
+                            </div>
+                        </div>
+                        <button onclick="copyToClipboard('6340944@schoolptk.ac.th')" class="text-sage-600 hover:text-sage-800 p-2 rounded-lg bg-white border border-sage-200 text-xs font-cute flex items-center gap-1 shrink-0">
+                            <i data-lucide="copy" class="w-3.5 h-3.5"></i> คัดลอก
+                        </button>
+                    </div>
+
+                    <!-- Line ID -->
+                    <div class="p-4 bg-sand/50 rounded-2xl border border-sage-200 flex items-center justify-between group hover:border-sage-500 transition-colors">
+                        <div class="flex items-center gap-3 overflow-hidden">
+                            <div class="bg-emerald-100 p-2.5 rounded-xl text-emerald-700">
+                                <i data-lucide="message-square" class="w-5 h-5"></i>
+                            </div>
+                            <div class="truncate">
+                                <p class="text-xs text-gray-500 font-cute">ID Line</p>
+                                <p class="font-semibold text-sage-800 text-sm truncate">1439900608873</p>
+                            </div>
+                        </div>
+                        <button onclick="copyToClipboard('1439900608873')" class="text-sage-600 hover:text-sage-800 p-2 rounded-lg bg-white border border-sage-200 text-xs font-cute flex items-center gap-1 shrink-0">
+                            <i data-lucide="copy" class="w-3.5 h-3.5"></i> คัดลอก
+                        </button>
+                    </div>
+
+                    <!-- Facebook -->
+                    <div class="p-4 bg-sand/50 rounded-2xl border border-sage-200 flex items-center justify-between group hover:border-sage-500 transition-colors">
+                        <div class="flex items-center gap-3">
+                            <div class="bg-blue-100 p-2.5 rounded-xl text-blue-700">
+                                <i data-lucide="facebook" class="w-5 h-5"></i>
+                            </div>
+                            <div>
+                                <p class="text-xs text-gray-500 font-cute">Facebook</p>
+                                <p class="font-semibold text-sage-800 text-sm">Kanada tuptim</p>
+                            </div>
+                        </div>
+                        <button onclick="copyToClipboard('Kanada tuptim')" class="text-sage-600 hover:text-sage-800 p-2 rounded-lg bg-white border border-sage-200 text-xs font-cute flex items-center gap-1">
+                            <i data-lucide="copy" class="w-3.5 h-3.5"></i> คัดลอก
+                        </button>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-sage-800 text-sage-100 py-8 px-4 mt-16 border-t-4 border-sage-600">
+        <div class="max-w-4xl mx-auto text-center space-y-3 font-cute">
+            <p class="text-sm font-medium">
+                © Kanada Tuptim - Personal Resume Website
+            </p>
+            <p class="text-xs text-sage-300">
+                โรงเรียนปทุมเทพวิทยาคาร | ออกแบบเพื่อใช้งานบน GitHub Pages 💚
+            </p>
+        </div>
+    </footer>
+
+    <!-- Transcript Lightbox Modal -->
+    <div id="imageModal" class="fixed inset-0 bg-black/70 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+        <div class="relative max-w-3xl w-full max-h-[90vh] bg-white rounded-3xl p-2 overflow-hidden shadow-2xl flex flex-col items-center">
+            <button onclick="closeModal()" class="absolute top-4 right-4 bg-sage-700 text-white p-2 rounded-full hover:bg-sage-800 transition-colors z-10">
+                <i data-lucide="x" class="w-6 h-6"></i>
+            </button>
+            <div class="w-full h-full overflow-auto p-2 flex justify-center">
+                <img id="modalImage" src="" alt="เอกสารขยาย" class="max-h-[80vh] w-auto rounded-xl object-contain">
+            </div>
+        </div>
+    </div>
+
+    <!-- Notification Toast for Copy Action -->
+    <div id="toast" class="fixed bottom-6 right-6 bg-sage-800 text-white px-4 py-2.5 rounded-2xl shadow-lg font-cute text-sm flex items-center gap-2 transform translate-y-20 opacity-0 transition-all duration-300 z-50">
+        <i data-lucide="check-circle-2" class="w-4 h-4 text-pastelGreen"></i>
+        <span id="toastMessage">คัดลอกข้อมูลเรียบร้อยแล้ว!</span>
+    </div>
+
+    <script>
+        // Initialize Lucide Icons
+        lucide.createIcons();
+
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Close mobile drawer on link click
+        document.querySelectorAll('#mobileMenu a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+
+        // Copy to Clipboard fallback helper
+        function copyToClipboard(text) {
+            const tempInput = document.createElement('input');
+            tempInput.value = text;
+            document.body.appendChild(tempInput);
+            tempInput.select();
+            document.execCommand('copy');
+            document.body.removeChild(tempInput);
+
+            showToast('คัดลอก ' + text + ' แล้ว!');
+        }
+
+        // Show Toast Notification
+        function showToast(message) {
+            const toast = document.getElementById('toast');
+            const toastMessage = document.getElementById('toastMessage');
+            toastMessage.textContent = message;
+
+            toast.classList.remove('translate-y-20', 'opacity-0');
+            toast.classList.add('translate-y-0', 'opacity-100');
+
+            setTimeout(() => {
+                toast.classList.remove('translate-y-0', 'opacity-100');
+                toast.classList.add('translate-y-20', 'opacity-0');
+            }, 2500);
+        }
+
+        // Modal Functionality
+        function openModal(imgSrc) {
+            const modal = document.getElementById('imageModal');
+            const modalImg = document.getElementById('modalImage');
+            modalImg.src = imgSrc;
+            modal.classList.remove('hidden');
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('imageModal');
+            modal.classList.add('hidden');
+        }
+
+        // Close modal when clicking outside image
+        document.getElementById('imageModal').addEventListener('click', (e) => {
+            if (e.target.id === 'imageModal') {
+                closeModal();
+            }
+        });
+    </script>
+</body>
+</html>
